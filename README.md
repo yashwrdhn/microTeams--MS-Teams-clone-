@@ -1,7 +1,14 @@
 # microTeams--MS-Teams-clone-
-host meetings, join teams and work collaboratively.
+host meetings, join teams and work collaboratively.  https://microteams10.herokuapp.com/.
 
-to setup locally
-  1. clone the repo
+microTeams is a mini version of microsoft Teams developed under Microsoft engage Mentorship programme.
+It supports video calling and chat.Additionally users can form teams to take part in discussions,
+complete assignments,brainstorm on a collaborative whiteboard and maintain a team file storage. 
+
+
+
+To setup locally
+  1. clone the repo.
   2.inside the repo directory, use 'npm install' to install necessary dependencies.
   3. use 'npm run start' or 'npm run test' to start the local server.
+
