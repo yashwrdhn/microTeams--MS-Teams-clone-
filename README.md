@@ -8,7 +8,7 @@ complete assignments,brainstorm on a collaborative whiteboard and maintain a tea
 
 
 To setup locally
-  1. clone the repo.
-  2.inside the repo directory, use 'npm install' to install necessary dependencies.
-  3. use 'npm run start' or 'npm run test' to start the local server.
+  1.Clone the repo.
+  2.Inside the repo directory, use 'npm install' to install necessary dependencies.
+  3. Use 'npm run start' or 'npm run test' to start the local server.
 
