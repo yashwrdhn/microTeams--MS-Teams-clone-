@@ -12,3 +12,5 @@ To setup locally
   2.Inside the repo directory, use 'npm install' to install necessary dependencies.
   3. Use 'npm run start' or 'npm run test' to start the local server.
 
+
+It is made using ExpressJs, a Nodejs powered backend with html,css,Bootstrap & vanilla javascript as front end. Along with that, socket.io and Web RTC api has been used for chat and video communications.
