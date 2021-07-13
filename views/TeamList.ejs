@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>TeamList</title>
+</head>
+<body>
+	<div class="container my-5">
+				<p>
+				  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#createTeam" >
+				    Create a Team
+				  </button>
+				  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#joinTeam" >
+				    Join a Team
+				  </button>
+				</p>
+
+				<div class="collapse" id="joinTeam">
+				  <div class="card card-body">
+				  	<form  method="post">
+				    <div class="input-group mb-3">
+					  <span class="input-group-text" id="basic-addon1">Team Name</span>
+					  <input type="text" name="team" class="form-control" placeholder="enter Team name">
+					  <button class="btn btn-primary" formaction="join-team" type="submit" >join</button>
+					</div>
+
+					</form>
+				  </div>
+				</div>
+
+				<div class="collapse" id="createTeam">
+				  <div class="card card-body">
+				  	<form  method="post">
+				    <div class="input-group mb-3">
+					  <span class="input-group-text" id="basic-addon1">Team Name</span>
+					  <input type="text" name="team" class="form-control" placeholder="enter Team name">
+					  <button class="btn btn-primary" formaction="create-team" type="submit" >Create</button>
+					</div>
+
+					</form>
+				  </div>
+				</div>
+	</div>	
+
+				
+					
+	<div class="container">
+		<h3>My Teams </h3>		
+		<div class="row my-1 row-cols-1 row-cols-md-5 g-4">
+		  <a href="/teams/testTeam">
+		  <div class="col">
+		    <div class="card h-100">
+		      <img src="./img/teamGoal.svg" class="card-img-top" alt="...">
+		      <div class="card-body">
+		        <h3 class="btn btn-lg">Sample Team </h3>
+		      </div>
+		    </div>  
+		  </div>
+		</a>
+		
+		  
+  		</div>
+  
+  
+  
+  
+</div>
+
+
+
+</body>
+</html>

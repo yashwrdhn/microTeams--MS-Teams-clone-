@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Meet</title>
+    <link rel="stylesheet" href="/css/room.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
+  
+</head>
+
+<body >
+
+  <div class="container">
+
+    <!-- <div class="row bg-light ">
+      <div class="text-center">
+        <p>
+       meeting code  <%= roomId %>  )</p>
+      </div>
+    </div> -->
+
+    <div class="row ">
+
+      <div class="col-lg-9 col-xs-8 border-end border-bottom bg-dark h-100">
+        
+        
+        <div class="row mt-3 ">
+          <div class="col"><video id="localVideo" autoplay></video></div>   
+          <div class="col"><video id="remoteVideo" autoplay></video></div>
+        </div>
+        <div class="row text-center">      
+          <div class="col"><video class="screen" id="screen" autoplay></video></div>
+        </div>  
+      </div>
+
+
+      <div class="col-lg-3 col-xs-8  pt-3 position-relative bg-dark text-white">
+        <ul class="mb-3" id="messages"></ul>
+        <div class="chat mt-5 column position-absolute bottom-0 ">
+        <form id="message" >
+          <div class="input-group mb-3">
+              <input id="msginput" type="text" name="msg" class="form-control" placeholder="type here">
+              <button class="btn btn-primary" type="submit" >send</button>
+          </div>
+   
+        </form>
+        
+      </div>
+
+
+    </div>
+    <div class="row bg-dark mx-1 my-1">
+            
+            <div class="col-lg-4 bg-dark text-white pt-2 col-sm-12 my-2">
+              meeting code <%= roomId %>
+            </div>        
+            <div class="col-lg-4 col-sm-12 mx-5 d-flex justify-content-center">
+
+            <div class="btn-group my-2 " role="group" aria-label="Basic radio toggle button group">
+                
+                <input type="radio" class="btn-check" name="btnradio1" id="btnradio1" autocomplete="off" checked>
+                <label id="micOn" class="btn btn-outline-primary" for="btnradio1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
+                <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+                </svg></label>
+
+                <input type="radio" class="btn-check" name="btnradio1" id="btnradio2" autocomplete="off">
+                <label id="micOff" class="btn btn-outline-danger" for="btnradio2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic-mute-fill" viewBox="0 0 16 16">
+                <path d="M13 8c0 .564-.094 1.107-.266 1.613l-.814-.814A4.02 4.02 0 0 0 12 8V7a.5.5 0 0 1 1 0v1zm-5 4c.818 0 1.578-.245 2.212-.667l.718.719a4.973 4.973 0 0 1-2.43.923V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 1 0v1a4 4 0 0 0 4 4zm3-9v4.879L5.158 2.037A3.001 3.001 0 0 1 11 3z"/>
+                <path d="M9.486 10.607 5 6.12V8a3 3 0 0 0 4.486 2.607zm-7.84-9.253 12 12 .708-.708-12-12-.708.708z"/>
+                </svg></label>
+
+            </div>
+
+
+
+            <div class="btn-group my-2 mx-1" role="group" aria-label="Basic radio toggle button group">
+                     
+                      <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
+                      <label id="cameraOn" class="btn btn-outline-primary" for="btnradio3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"/>
+                      </svg></label>
+
+                      <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                      <label id="cameraOff" class="btn btn-outline-danger" for="btnradio4"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video-off-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M10.961 12.365a1.99 1.99 0 0 0 .522-1.103l3.11 1.382A1 1 0 0 0 16 11.731V4.269a1 1 0 0 0-1.406-.913l-3.111 1.382A2 2 0 0 0 9.5 3H4.272l6.69 9.365zm-10.114-9A2.001 2.001 0 0 0 0 5v6a2 2 0 0 0 2 2h5.728L.847 3.366zm9.746 11.925-10-14 .814-.58 10 14-.814.58z"/>
+                    </svg></label>
+
+            </div>
+              
+           
+            <div class="btn-group my-2 mx-1" role="group" aria-label="Basic radio toggle button group">
+
+                      <input type="radio" class="btn-check" name="btnradio3" id="btnradio5" autocomplete="off" checked>
+                      <label id="recordingOn" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="start recording" for="btnradio5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-record-btn-fill" viewBox="0 0 16 16">
+  <path d="M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8-1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg></label>
+
+                      <input type="radio" class="btn-check disabled" name="btnradio3" id="btnradio6" autocomplete="off">
+                      <label id="recordingOff" class="btn btn-outline-danger " data-bs-toggle="tooltip" data-bs-placement="top" title="stop recording"for="btnradio6"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stop" viewBox="0 0 16 16">
+                      <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                    </svg></label>
+                     <button class="btn btn-primary mx-2 " id="share" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"/>
+                <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                </svg></button>
+                <button class="btn btn-danger mx-1 " id="hangupButton" disabled> Leave </button>
+            </div>
+          </div>
+              <div class="col-lg-3 col-sm-12  d-flex justify-content-end ">
+               
+                
+                <!-- <button class="btn btn-primary mx-1 my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">info</button>
+ -->          
+                <button class="btn btn-primary mx-1 my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">WhiteBoard</button>
+                
+              </div>
+             
+          </div>
+          
+   
+        
+            
+    </div>
+
+
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">WhiteBoard</h5>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <a target ="_blank" href="/teamWhiteboard" >open whiteboard</a>
+  </div>
+</div>
+
+
+  
+
+  
+
+  <script> ROOM_ID = "<%= roomId %>" </script> 
+  <script type="text/javascript" src= "/socket.io/socket.io.js"></script>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script type="text/javascript" src="/webrtc.js"></script>
+
+</body>
+</html>
+
+

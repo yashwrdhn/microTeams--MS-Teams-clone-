@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= team %> </title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/team.css">
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+	  		
+	  <div class="row">	
+
+	    <div class="col-2 pt-3 my-3 border-start h-100">
+	    	<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+			   <li class="breadcrumb-item"><a href="/">Home</a></li>
+			   <li class="breadcrumb-item"><a href="#">Teams</a></li>
+			   <li class="breadcrumb-item active" aria-current="page"><%= team %></li>
+			</ol>
+		</nav>
+	      	<nav class="nav flex-column">
+			  <a class="nav-link active" aria-current="page" href="/rooms">Start a meet</a>
+			  <a class="nav-link" href="#">Team-info</a>
+			  
+			  
+			</nav>
+	    </div>
+
+	    <div class="col-8 main border-end border-start h-100">  
+	    	<div>
+		    	<nav>
+				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+				    <button class="nav-link active" id="nav-general-tab" data-bs-toggle="tab" data-bs-target="#nav-general" type="button" role="tab" aria-controls="nav-general" aria-selected="true">General</button>
+				    <button class="nav-link" id="nav-assignment-tab" data-bs-toggle="tab" data-bs-target="#nav-assignment" type="button" role="tab" aria-controls="nav-assignment" aria-selected="false">Assignment</button>
+				    <button class="nav-link" id="nav-files-tab" data-bs-toggle="tab" data-bs-target="#nav-files" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Files</button>
+				  </div>
+				</nav>
+				<div class="tab-content" id="nav-tabContent">
+
+				  <div class="tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-home-tab">
+				  	<div class="col">
+					    <div class="card h-100">
+					    	<div class="card-body">
+					      <img src="/img/teamChat.svg" class="card-img-bottom" alt="...">
+					      </div>
+					    </div>  
+				  	</div>
+				  	
+				  	
+				  <!-- 	<div class="posts">
+				  		<div class="card my-3">
+						  <div class="card-header">
+						    Sample Post
+						  </div>
+						  <div class="card-body">
+						    <h5 class="card-title">Team meeting @5.00pm </h5>
+						    <p class="card-text">Let's meet today and discuss about Agile methodology</p>
+						    <button class="btn btn-primary">Reply</button>
+						  </div>
+						</div>
+					</div> -->
+					
+					<div class="posts">
+						<% posts.forEach( function(post) { %>
+				  		<div class="card my-3">
+						  <div class="card-header">
+						    Discussion
+						  </div>
+						  <div class="card-body">
+						    <h5 class="card-title"> <%= post.title %></h5>
+						    <p class="card-text"><%= post.message %></p>
+						    <ul class="team-messages">
+						    	<% if(post.replies){ %>
+						    	<% post.replies.forEach( function(reply) { %>
+						    	<li><%= reply.user %> : <%= reply.message %></li>
+						    	<% }); %>
+						    	<% }; %>
+						    </ul>
+						    <form class="reply-chat">
+							    <div class="input-group mb-3">
+								  <input  type="text" name="reply" class="form-control reply-msg" placeholder="reply">
+								  <button class="btn btn-primary" type="submit" >send</button>
+								</div>
+							</form>
+						  </div>
+						</div>
+						<% }); %>
+					</div>
+					
+
+					<div class="container my-2">
+						<p><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#newChat" >
+
+						    New Conversation</button></p>
+
+						<div class="collapse" id="newChat">
+						  <div class="card card-body">
+						  	<form id="form" method="post">
+							    <div class="input-group mb-3">
+								  <span class="input-group-text" id="basic-addon1">Enter Discussion Heading</span>
+
+								  <input id="title" type="text" name="title" class="form-control">
+								  <!-- <button class="btn btn-primary" formaction="new-discussion" type="submit" >Start</button> -->
+								  <button class="btn btn-primary" formaction="new-discussion" type="submit" >Post</button> 
+								  <input type="hidden" for="" name="team" value="<%= team %>" class="form-control">
+								</div>  
+								<div class="">
+									<label for="floatingTextarea">Message</label>
+						  				<textarea id="message" name="message" class="form-control" placeholder="type your message here" ></textarea>			  				
+								</div>
+						    </form>
+						  </div>	
+			    		</div>
+			  		</div>
+
+				  </div>
+
+
+				  <div class="tab-pane fade" id="nav-assignment" role="tabpanel" aria-labelledby="nav-assignment-tab">
+				  	<div class="col ">
+					    <div class="card h-100">
+					    	<div class="card-body">
+					      <img src="/img/teamGoal.svg" class="card-img-bottom" alt="...">
+					      </div>
+					    </div>  
+				  	</div>
+				  	
+				  	<div class="assignments">
+					  	<!-- <div class="card my-3">
+						  <div class="card-header">
+						    Sample Assignment
+						  </div>
+						  <div class="card-body">
+						    <h5 class="card-title">Assignment </h5>
+						    <p class="card-text">Let's meet today and discuss about Agile methodology</p>
+						    <button class="btn btn-primary">Submit</button>
+						  </div>
+						</div> -->
+						<% assignments.forEach( (assignment) => {%>
+						<div class="card my-3">
+						  <div class="card-header">
+						    Assignment - due@<%= assignment.duedate %>
+						  </div>
+						  <div class="card-body">
+						    <h5 class="card-title"><%= assignment.title %> </h5>
+						    <p class="card-text"><%= assignment.tasks %></p>
+						    <!-- <button class="btn disabled btn-primary">Submit</button> -->
+						  </div>
+						</div>
+						<% }); %>
+
+
+					</div>
+				  	<div class="container my-5">
+						<p><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#newAssignment" >New Assignment</button></p>
+						<div class="collapse" id="newAssignment">
+						  <div class="card card-body ">
+						  	<form id="form" method="post">
+							    <div class="input-group mb-3">
+								  <span class="input-group-text" id="basic-addon1">Enter Assigment Name</span>
+								  <input id="name1" type="text" for="" name="name1" class="form-control">
+								  <input type="hidden" for="" name="team" value="<%= team %>" class="form-control">
+								  <button class="btn btn-primary" formaction="new-assignment" type="submit" >Post</button>
+								</div>  
+								<div class="">
+									<label for="floatingTextarea">Tasks</label>
+						  				<textarea id="tasks" class="form-control" name="tasks" placeholder="List down Tasks" ></textarea>
+								</div>
+						    </form>
+						  </div>	
+			    		</div>
+			  		</div>
+
+			  		
+
+				  </div>
+
+
+
+				  <div class="tab-pane fade" id="nav-files" role="tabpanel" aria-labelledby="nav-files-tab">
+				  	<div class="col ">
+					    <div class="card h-100">
+					    	<div class="card-body">
+					      <img src="/img/addFile.svg" class="card-img-bottom" alt="...">  
+					      </div>
+					    </div>  
+				  	</div>
+				  	<div class="container my-2">
+				  		<form method="post" enctype="multipart/form-data" >
+						<div class="input-group mb-3">
+						  <!-- <label for="formFile" class="form-label">file input</label> -->
+						  <input class="form-control" name="file" type="file" id="formFile">
+						  <button class="btn btn-primary"  formaction="/files" type="submit" >upload File</button>
+						</div>
+						</form>
+					</div>
+				  	<div class="my-2 list-group list-group-flush">
+
+					  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+					    team-meeting_11/7/21.mp4
+					  </a>
+					  <a href="#" class="list-group-item list-group-item-action"> team-meeting_1/7/21.mp4</a>
+					  <a href="#" class="list-group-item list-group-item-action"> team-meeting_11/6/21.mp4</a>
+					</div>
+					
+				  </div>
+				</div>
+			</div>
+			
+				
+	  	</div>	
+	</div>
+	
+
+
+
+	<script src="/socket.io/socket.io.js"></script> 
+	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+	
+	<script> 
+		team_name = "<%= team %>"
+		window.user_name = 'anonymous';
+	</script>
+	<script src="/team.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<div class=" mx-5 pt-5 row row-cols-auto">
+
+<% notes.forEach(function(note) { %>
+<div class="card text-dark bg-light mx-1 mb-3" style="max-width: 18rem;">
+  <!-- <div class="card-header">Header</div> -->
+  <div class="card-body">
+    <h5 class="card-title"> <%=note.title%> </h5>
+    <p class="card-text"> <%=note.text%> </p>
+  </div>
+</div>
+<% }); %>
+</div>
+
+
+<div class=" container mx-5 my-2">
+  <p><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#newNote" >
+      New Note</button></p>
+
+  <div class="collapse" id="newNote">
+    <div class="card card-body">
+      <form id="form" method="post">
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Enter Note Title</span>
+        <input id="note" type="text" name="title" class="form-control">
+        <!-- <button class="btn btn-primary" formaction="new-discussion" type="submit" >Start</button> -->
+        <button class="btn btn-primary" formaction="new-note" type="submit" >Add Note</button> 
+        
+      </div>  
+      <div class="">
+        <label for="floatingTextarea">Message</label>
+            <textarea id="note-details" name="text" class="form-control" placeholder="type note details here" ></textarea>                
+      </div>
+      </form>
+    </div>  
+  </div>
+</div>
+<!-- <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Secondary card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+ -->
+
